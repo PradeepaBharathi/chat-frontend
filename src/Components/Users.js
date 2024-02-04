@@ -34,11 +34,13 @@ function Users() {
         Authorization: `Bearer ${userData.data.token}`,
       },
     };
-    axios.get("http://localhost:8080/user/fetchUsers", config).then((data) => {
-      console.log("UData refreshed in Users panel ");
-      setUsers(data.data);
-      // setRefresh(!refresh);
-    });
+    axios
+      .get("https://chatter-cv65.onrender.com/user/fetchUsers", config)
+      .then((data) => {
+        console.log("UData refreshed in Users panel ");
+        setUsers(data.data);
+        // setRefresh(!refresh);
+      });
   }, [refresh]);
 
   return (
@@ -94,7 +96,7 @@ function Users() {
                     },
                   };
                   axios.post(
-                    "http://localhost:8080/chat/",
+                    "https://chatter-cv65.onrender.com/chat/",
                     {
                       userId: user._id,
                     },

@@ -11,7 +11,7 @@ import axios from "axios";
 import { myContext } from "./MainContainer";
 import {  io } from "socket.io-client";
 
-const ENDPOINT = "http://localhost:8080"
+const ENDPOINT = "https://chatter-cv65.onrender.com";
 var socket,chat
 
 
@@ -38,7 +38,7 @@ function ChatArea() {
     };
     axios
       .post(
-        "http://localhost:8080/message/",
+        "https://chatter-cv65.onrender.com/message/",
         {
           content: messageContent,
           chatId: chat_id,
@@ -46,7 +46,7 @@ function ChatArea() {
         config
       )
       .then(({ response }) => {
-        data = response
+        data = response;
         console.log("Message Fired");
       });
     socket.emit("newMessage",data)
@@ -81,11 +81,11 @@ function ChatArea() {
       },
     };
     axios
-      .get("http://localhost:8080/message/" + chat_id, config)
+      .get("https://chatter-cv65.onrender.com/message/" + chat_id, config)
       .then(({ data }) => {
         setAllMessages(data);
         setloaded(true);
-        socket.emit("join chat",chat_id)
+        socket.emit("join chat", chat_id);
       });
     setAllMessagesCopy(allMessages)
   }, [refresh, chat_id,allMessages]);
